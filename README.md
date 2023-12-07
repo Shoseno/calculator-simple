@@ -1,4 +1,4 @@
 # calculator-simple
 web calculator that can handle basic operations. 
 
-current bugs: doing more that two operations at once breaks the machine. if you input 15 + 15 then + again. it will show to answer but not clear it upon new inputs. 
+current bugs: dividing again once something in the display results in a 1 showing up on the screen. 

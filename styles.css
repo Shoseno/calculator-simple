@@ -81,3 +81,7 @@ button {
 .operator-pad>button {
     font-size: 30px;
 }
+
+#clear {
+    width: 300px;
+}

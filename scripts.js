@@ -54,13 +54,28 @@ function clearDisplay() {
     display.innerHTML = '';  
 }
 
+
 const digits = document.querySelectorAll('.digit');
 digits.forEach(function(digitBtn) {
     digitBtn.addEventListener('click', function() {
+        if (operatorCheck() && lastClickedBtnIsOperatorCheck()) {
+            clearDisplay();
+
+        }
         display.innerHTML += digitBtn.innerHTML;
     })
 });
 
+function lastClickedBtnIsOperatorCheck() {
+    return (lastClickedBtnId === 'add'||lastClickedBtnId === 'subtract'||lastClickedBtnId === 'multiply'||lastClickedBtnId === 'divide'); 
+}
+
+function operatorCheck() {
+    return (operator === 'add' 
+    || operator === 'subtract' 
+    || operator === 'multiply' 
+    || operator === 'divide')
+}
 
 const operators = document.querySelector('.operator-pad');
 
@@ -68,29 +83,18 @@ operators.addEventListener('click', (event) => {
     const isButton = event.target.nodeName === 'BUTTON';
     if (!isButton) {
         return;
-    } else if (operator === 'add' 
-            || operator === 'subtract' 
-            || operator === 'multiply' 
-            || operator === 'divide') {
+    } else if (operatorCheck()) {
                 calculate();
+                num1 = +display.innerHTML;
+                operator = event.target.id;
                 return;
             }
     num1 = +display.innerHTML;
     operator = event.target.id;
-    clearDisplay();
 });
 
 const equalsBtn = document.querySelector('#equals');
-equalsBtn.addEventListener('click', function calculate() {
-    num2 = +display.innerHTML;
-    console.log(num1);
-    console.log(operator);
-    console.log(num2);
-    clearDisplay();
-    operate(operator, num1, num2);
-    display.innerHTML = answer;
-    operator = '';
-});
+equalsBtn.addEventListener('click', calculate );
 
 function calculate() {
     num2 = +display.innerHTML;
@@ -100,5 +104,14 @@ function calculate() {
     clearDisplay();
     operate(operator, num1, num2);
     display.innerHTML = answer;
-    operator = '';
+    num1 = +answer;
 }
+
+const clearBtn = document.querySelector('#clear');
+clearBtn.addEventListener('click', function() {
+    clearDisplay();
+    num1 ='';
+    num2 ='';
+    operator = '';
+    answer = '';
+});
