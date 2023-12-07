@@ -1,0 +1,83 @@
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: antiquewhite;
+}
+* {
+    box-sizing: border-box;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    font-size: 50px;
+    color: rgb(15, 88, 15);
+    margin-bottom: 20px;
+}
+.header-inner-wrap {
+    border: 5px solid;
+    border-radius: 50px;
+    padding: 7px;
+    background-color: wheat;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 5px solid grey;
+    border-radius: 25px;
+    padding: 5px;
+    width: 600px;
+    height: 700px;
+}
+.content-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.display {
+    border: 5px solid gray;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: end;
+    padding: 15px;
+    width: 85%;
+    height: 100px;
+    margin-bottom: 100px;
+    margin-top: 25px;
+    background-color: rgb(164, 172, 179);
+    font-size: 40px;
+}
+
+button {
+    width: 110px;
+    height: 75px;
+    border-radius: 10px;
+    gap: 5px;
+}
+
+.main-buttons {
+    display: flex;
+    margin: 10px;
+    margin-inline: 40px;
+}
+
+.numpad,
+.operator-pad {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.operator-pad>button {
+    background-color: darkseagreen;
+}
+
+.numpad>button,
+.operator-pad>button {
+    font-size: 30px;
+}
