@@ -67,8 +67,9 @@ digits.forEach(function(digitBtn) {
 });
 
 function lastClickedBtnIsOperatorCheck() {
-    return (lastClickedBtnId === 'add'||lastClickedBtnId === 'subtract'||lastClickedBtnId === 'multiply'||lastClickedBtnId === 'divide'); 
+    return (lastClickedBtnId === 'add'||lastClickedBtnId === 'subtract'||lastClickedBtnId === 'multiply'||lastClickedBtnId === 'divide'||lastClickedBtnId === 'equals'); 
 }
+
 
 function operatorCheck() {
     return (operator === 'add' 
@@ -94,7 +95,11 @@ operators.addEventListener('click', (event) => {
 });
 
 const equalsBtn = document.querySelector('#equals');
-equalsBtn.addEventListener('click', calculate );
+equalsBtn.addEventListener('click', function() {
+    calculate();
+    num1 = +display.innerHTML;
+    operator = '';
+} );
 
 function calculate() {
     num2 = +display.innerHTML;
@@ -115,3 +120,12 @@ clearBtn.addEventListener('click', function() {
     operator = '';
     answer = '';
 });
+
+const decimalBtn = document.querySelector('#decimal');
+decimalBtn.addEventListener('click', function() {
+    decimalBtnCheck() ? alert('ONLY ONE DECIMAL PLEASE!!') : display.innerHTML += '.';
+});
+
+function decimalBtnCheck() {
+    return display.innerHTML.includes('.');
+}
